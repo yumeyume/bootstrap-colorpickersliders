@@ -310,7 +310,11 @@
         popover_container.remove();
         popover_container = null;
 
-        triggerelement.popover('destroy');
+        if($.fn.tooltip.Constructor.VERSION.indexOf("4.") == 0) {
+          triggerelement.popover('dispose');
+        } else {
+          triggerelement.popover('destroy');
+        }
       }
 
       function _getControllerHtml() {
